@@ -3,39 +3,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#111111"
-    android:padding="20dp">
+    android:background="#0F0F12"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="EXILON TRACKER"
-        android:textColor="#D32F2F"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textColor="#E53935"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginTop="40dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exilon Studio Mobile Core"
+        android:text="Exilon Studio Mobile Dashboard"
         android:textColor="#888888"
-        android:textSize="12sp"
-        android:layout_marginBottom="20dp" />
+        android:textSize="13sp"
+        android:layout_marginBottom="40dp" />
 
     <TextView
         android:id="@+id/txtStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Durum: Motor Aktif"
+        android:text="Status: Exilon Engine 3.0 Active"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:layout_marginBottom="10dp" />
+        android:textSize="15sp"
+        android:background="#1E1E24"
+        android:padding="16dp"
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:id="@+id/btnOpenWeb"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Exilon Studio Web Portal"
-        android:backgroundTint="#D32F2F"
-        android:textColor="#FFFFFF" />
+        android:layout_height="60dp"
+        android:text="Exilon Studio Portal"
+        android:backgroundTint="#E53935"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
 </LinearLayout>
