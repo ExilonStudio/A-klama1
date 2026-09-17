@@ -1,39 +1,16 @@
-name: Build Exilon Tracker Multi-Platform
-
-on:
-  push:
-    tags:
-      - 'v*'
-  workflow_dispatch:
-
-jobs:
-  build-windows:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0.x'
-    - run: dotnet publish Sources/ExilonTracker.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true -o ./publish/x64
-    - uses: actions/upload-artifact@v4
-      with:
-        name: ExilonTracker-Windows-x64
-        path: publish/x64/
-
-  build-android:
+build-android:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-java@v3
+    - uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '17'
     - name: Build APK
       run: |
         cd SourcesAndroid
-        chmod +x gradlew || true
-        gradle assembleRelease
+        gradle assembleDebug
     - uses: actions/upload-artifact@v4
       with:
         name: ExilonTracker-Android-APK
-        path: SourcesAndroid/app/build/outputs/apk/release/app-release-unsigned.apk
+        path: SourcesAndroid/app/build/outputs/apk/debug/app-debug.apk
