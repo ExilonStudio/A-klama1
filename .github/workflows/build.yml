@@ -12,24 +12,21 @@ jobs:
 
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
 
     - name: Build x64 Exe
-      run: dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true -o ./publish/x64
+      run: dotnet publish ExilonTracker.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true -o ./publish/x64
 
     - name: Build x86 Exe
-      run: dotnet publish -c Release -r win-x86 --self-contained true /p:PublishSingleFile=true -o ./publish/x86
+      run: dotnet publish ExilonTracker.csproj -c Release -r win-x86 --self-contained true /p:PublishSingleFile=true -o ./publish/x86
 
-    - name: Create Release
-      uses: softprops/action-gh-release@v1
+    - name: Upload Artifacts (x64 & x32)
+      uses: actions/upload-artifact@v4
       with:
-        files: |
-          ./publish/x64/ExilonTracker.exe
-          ./publish/x86/ExilonTracker.exe
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        name: ExilonTracker-Executables
+        path: publish/
