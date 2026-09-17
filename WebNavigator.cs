@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -15,6 +16,7 @@ namespace ExilonTracker
                     UseShellExecute = true
                 });
             }
+            catch (Exception)
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
